@@ -26,7 +26,7 @@ app = Http(__name__, conf=conf,router=injector.get(Router))
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0",
-        port=8080,  # 使用 8080 端口或您需要的端口
+        port=5000,  # 使用 8080 端口或您需要的端口
         # ssl_context=("cert.pem", "key-no-pass.pem")  # 指定證書和私鑰
     )
 
