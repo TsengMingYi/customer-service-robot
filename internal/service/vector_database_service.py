@@ -12,9 +12,13 @@ from injector import inject
 # from langchain_weaviate import WeaviateVectorStore
 from langchain_qdrant import QdrantVectorStore
 from qdrant_client import QdrantClient
+from dotenv import load_dotenv
+import os
 # from weaviate import WeaviateClient
 # import weaviate
 # from weaviate.auth import AuthApiKey
+
+load_dotenv()
 
 
 @inject
@@ -42,7 +46,7 @@ class VectorDatabaseService:
         self.vector_store = QdrantVectorStore(
             client=self.client,
             collection_name="test_nomember",
-            embedding=OpenAIEmbeddings(openai_api_key="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",model="text-embedding-3-small")
+            embedding=OpenAIEmbeddings(openai_api_key=os.getenv("OPENAI_API_KEY"),model="text-embedding-3-small")
         )
 
         # # 2. 創建/連接 Qdrant 向量資料庫

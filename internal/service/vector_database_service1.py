@@ -12,10 +12,13 @@ from injector import inject
 # from langchain_weaviate import WeaviateVectorStore
 from langchain_qdrant import QdrantVectorStore
 from qdrant_client import QdrantClient
+import os
+from dotenv import load_dotenv
 # from weaviate import WeaviateClient
 # import weaviate
 # from weaviate.auth import AuthApiKey
 
+load_dotenv()
 
 @inject
 class VectorDatabaseService1:
@@ -57,7 +60,7 @@ class VectorDatabaseService1:
         self.vector_store = QdrantVectorStore(
             client=self.client,
             collection_name="test2",
-            embedding=OpenAIEmbeddings(openai_api_key="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",model="text-embedding-3-small")
+            embedding=OpenAIEmbeddings(openai_api_key=os.getenv("OPENAI_API_KEY"),model="text-embedding-3-small")
         )
 
     def get_retriever(self) -> VectorStoreRetriever:

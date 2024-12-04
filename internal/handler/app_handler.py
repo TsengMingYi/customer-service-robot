@@ -24,6 +24,10 @@ from langchain.memory import ConversationBufferWindowMemory
 from langchain_community.chat_message_histories import FileChatMessageHistory
 from langchain_core.runnables import RunnablePassthrough, RunnableLambda, RunnableConfig
 from langchain_core.output_parsers import StrOutputParser
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 @inject
 @dataclass
@@ -81,7 +85,7 @@ class AppHandler:
         # )
 
         # 3. 創建llm
-        llm = ChatOpenAI(model="gpt-4o-mini",api_key="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")
+        llm = ChatOpenAI(model="gpt-4o-mini",api_key=os.getenv("OPENAI_API_KEY"))
 
         # 4. 創建鏈應用
         # retriever = self.vector_database_service.get_retriever() | self.vector_database_service.combine_documents
@@ -163,7 +167,7 @@ class AppHandler:
         # )
 
         # 3. 創建llm
-        llm = ChatOpenAI(model="gpt-4o-mini",api_key="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")
+        llm = ChatOpenAI(model="gpt-4o-mini",api_key=os.getenv("OPENAI_API_KEY"))
 
         # 4. 創建鏈應用
         # retriever = self.vector_database_service1.get_retriever() | self.vector_database_service1.combine_documents
